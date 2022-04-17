@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -508,6 +509,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      MonsterNightSprites_14: 3290783182769735934
+      MonsterNightSprites_8: 1466490097861169395
+      MonsterNightSprites_5: -4894529852039135275
+      MonsterNightSprites_9: -3164137233453905397
+      MonsterNightSprites_0: 3074830837072564807
+      MonsterNightSprites_11: -2239988101632833588
+      MonsterNightSprites_1: -6220255740455333046
+      MonsterNightSprites_12: 8662542399086547032
+      MonsterNightSprites_7: 6137477517170411698
+      MonsterNightSprites_13: 3697861957643423513
+      MonsterNightSprites_10: 2670369544189939042
+      MonsterNightSprites_15: 1451117615577543145
+      MonsterNightSprites_3: -9203798328994632883
+      MonsterNightSprites_6: 2197340772721168310
+      MonsterNightSprites_4: 670690063065554304
+      MonsterNightSprites_2: 6093695659311938061
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

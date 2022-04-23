@@ -15,6 +15,7 @@ public class WeaponHolder : MonoBehaviour
         _context = WeaponContext.instance;
         _tier = 0;
         OnWeaponUpgraded();
+        OnWeaponUpgraded();
     }
 
     public void OnWeaponUpgraded()

@@ -24,7 +24,6 @@ public abstract class Weapon : MonoBehaviour
     public void UpdateWeaponParameters(WeaponData data)
     {
         _baseDamageOffset = data.DamageOffset;
-        _damageMultiplyer = data.DamageMultiplyer;
         _durationMultiplyer = data.DurationMultiplyer;
     }
 }
@@ -32,8 +31,6 @@ public abstract class Weapon : MonoBehaviour
 public class WeaponData
 {
     public int Tier;
-
-    public float DamageMultiplyer;
 
     public float DurationMultiplyer;
 

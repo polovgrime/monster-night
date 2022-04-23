@@ -22,7 +22,6 @@ public class Sword : Weapon
             Tier = descriptor.Tier,
             DamageOffset = descriptor.DamageOffset,
             Count = descriptor.Count,
-            DamageMultiplyer = descriptor.DamageMultiplyer,
             DurationMultiplyer = descriptor.DurationMultiplyer,
             Cooldown = descriptor.Cooldown
         };

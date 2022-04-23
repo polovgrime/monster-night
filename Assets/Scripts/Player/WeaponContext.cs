@@ -16,7 +16,8 @@ public class WeaponContext : MonoBehaviour
 
     public List<WeaponTierDescriptor<Sword>> Swords = new List<WeaponTierDescriptor<Sword>>()
     {
-        new WeaponTierDescriptor<Sword>(1, 1, 1, 1, 2, 0)
+        new WeaponTierDescriptor<Sword>(1, 1, 1, 2, 0),
+        new WeaponTierDescriptor<Sword>(2, 1, 2, 1.75f, 0),
     };
 }
 
@@ -35,10 +36,9 @@ public class WeaponTierDescriptor<T>
 
     public readonly float Cooldown;
 
-    public WeaponTierDescriptor(int tier, float dmgMultiplyer, float durMultiplyer, int count, float cooldown, int damageOffset)
+    public WeaponTierDescriptor(int tier, float durMultiplyer, int count, float cooldown, int damageOffset)
     {
         Tier = tier;
-        DamageMultiplyer = dmgMultiplyer;
         DurationMultiplyer = durMultiplyer;
         Count = count;
         DamageOffset = damageOffset;

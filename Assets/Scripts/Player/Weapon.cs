@@ -5,15 +5,41 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] private int _damage;
-    [SerializeField] private int _tier;
+    private float _damageMultiplyer;
+    private float _durationMultiplyer;
+    private int _baseDamageOffset;
     protected float _currentDamage => _damage * GameParameters.GetMultiplier(GameParameters.DamageMultiplier);
-    public int Tier => _tier;
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Попал по врагу");
         var enemy = collision.GetComponent<Enemy>();
-        enemy.ApplyDamage(_currentDamage);
-        Destroy(gameObject);
+        if (enemy != null)
+        {        
+            enemy.ApplyDamage(_currentDamage);
+            Destroy(gameObject);
+        }
     }
+
+    public abstract WeaponData GetWeaponData(WeaponContext context, int tier);
+    public void UpdateWeaponParameters(WeaponData data)
+    {
+        _baseDamageOffset = data.DamageOffset;
+        _damageMultiplyer = data.DamageMultiplyer;
+        _durationMultiplyer = data.DurationMultiplyer;
+    }
+}
+
+public class WeaponData
+{
+    public int Tier;
+
+    public float DamageMultiplyer;
+
+    public float DurationMultiplyer;
+
+    public int Count;
+
+    public int DamageOffset;
+
+    public float Cooldown;
 }

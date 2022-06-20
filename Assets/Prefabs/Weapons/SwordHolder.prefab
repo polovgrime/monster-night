@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPrefab: {fileID: 7220636702343541806, guid: 3300a53f0fc0bc54a9be696dc30910c9, type: 3}
+  _weaponName: Sword

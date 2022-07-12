@@ -17,13 +17,21 @@ public class Player : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-        } else
+        } 
+        else
         {
             Destroy(gameObject);
             return;
         }
 
         _health = _baseHealth;
+
+        if (_weapons.Count != 0)
+        {
+            _weapons = _weapons
+                .Select(e => SetUpWeapon(e))
+                .ToList();
+        }
     }
 
     private void Start()
@@ -69,11 +77,16 @@ public class Player : MonoBehaviour
 
         if (existingWeapon == null)
         {
-            _weapons.Add(Instantiate(weaponHolder, transform.position, Quaternion.identity, transform));
+            _weapons.Add(SetUpWeapon(weaponHolder));
         }
         else 
         {
             existingWeapon.OnWeaponUpgraded();
         }
+    }
+
+    private WeaponHolder SetUpWeapon(WeaponHolder holder)
+    {
+        return Instantiate(holder, transform.position, Quaternion.identity, transform);
     }
 }

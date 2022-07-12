@@ -58,4 +58,24 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void ChangePosition()
+    {
+        var spawnDirection = (RespawnDirection)Random.Range(0, 5);
+        var xOffset = 0f;
+        var yOffset = 0f;
+
+        switch (spawnDirection){
+            
+        }
+    }
+    
+}
+
+enum RespawnDirection
+{
+    North = 0,
+    East,
+    South,
+    West
 }

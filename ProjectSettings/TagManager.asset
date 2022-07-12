@@ -14,8 +14,8 @@ TagManager:
   - Enemy
   - Weapon
   - Pickups
-  - 
-  - 
+  - Player
+  - Walls
   - 
   - 
   - 

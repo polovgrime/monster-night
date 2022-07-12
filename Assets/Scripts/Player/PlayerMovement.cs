@@ -9,18 +9,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private SpriteRenderer _spriteRenderer;
     private Vector2 _direction;
+    public Vector2 LastDirection 
+    {
+        get;
+        private set;
+    }
 
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _currentSpeed = _baseSpeed;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        LastDirection = Vector2.right;
     }
 
     private void OnSpeedChange(float additionalSpeed)
@@ -40,5 +40,9 @@ public class PlayerMovement : MonoBehaviour
         _rigidBody.velocity = _direction * _currentSpeed;
         if (_rigidBody.velocity.x != 0)
             _spriteRenderer.flipX = _rigidBody.velocity.x < 0;
+        
+
+        if (_direction != Vector2.zero)
+            LastDirection = _direction;
     }
 }

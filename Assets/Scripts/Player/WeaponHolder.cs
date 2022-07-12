@@ -14,7 +14,7 @@ public class WeaponHolder : MonoBehaviour
     private WeaponData _weaponData;
     private float _actualCooldown = 10f;
 
-    [SerializeField]private List<Weapon> _instantiatedWeapons = new List<Weapon>();
+    [SerializeField] private List<Weapon> _instantiatedWeapons = new List<Weapon>();
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class WeaponHolder : MonoBehaviour
         var prevCount = _weaponData?.Count ?? 0;
         _weaponData = _weaponPrefab.GetWeaponData(_context, _tier);
         var toSpawn = _weaponData.Count - prevCount;
-        while(toSpawn > 0)
+        while (toSpawn > 0)
         {
             var position = _instantiatedWeapons.FirstOrDefault()?.transform.position ?? transform.position;
             var weapon = Instantiate(_weaponPrefab, position, Quaternion.identity);
@@ -45,7 +45,12 @@ public class WeaponHolder : MonoBehaviour
         _actualCooldown -= Time.fixedDeltaTime;
         if (_actualCooldown <= float.Epsilon)
         {
-            UseWeapon();
+            if (WeaponName == "bullet")
+            {
+                StartCoroutine(UseBullet());
+            }
+            else
+                UseWeapon();
             _actualCooldown = _weaponData.Cooldown;
         }
     }
@@ -53,9 +58,14 @@ public class WeaponHolder : MonoBehaviour
     private void UseWeapon()
     {
         _instantiatedWeapons.ForEach(e => e.UseWeapon(transform));
-        // for (int i = 0; i < _weaponData.Count; i++)
-        // {
-        //     Instantiate(_weaponPrefab, transform.position, Quaternion.identity);
-        // }
+    }
+
+    private IEnumerator UseBullet()
+    {
+        foreach (var weapon in _instantiatedWeapons)
+        {
+            weapon.UseWeapon(transform);
+            yield return new WaitForSeconds(0.25f);
+        }
     }
 }

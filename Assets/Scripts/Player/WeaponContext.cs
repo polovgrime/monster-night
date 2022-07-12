@@ -25,6 +25,12 @@ public class WeaponContext : MonoBehaviour
         new WeaponData(6, 1, 10, 1.25f, 0, "tba"),
     };
 
+    public List<WeaponData> Bullets = new List<WeaponData>()
+    {
+        new WeaponData(1, 5, 4, 2, 0, "+1 projectile, lower cooldown"),
+        new WeaponData(2, 5, 5, 1.75f, 0, "tba"),
+    };
+
     private void OnDestroy()
     {
         if (instance == this)

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private List<WeaponHolder> _weapons;
     ParticleSystem _bloodEffect;
     private int _health;
+
     private void Awake()
     {
         if (instance == null)

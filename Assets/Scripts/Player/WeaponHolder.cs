@@ -13,7 +13,7 @@ public abstract class WeaponHolder : MonoBehaviour
     public string NextUpgradeDescription => _weaponData.NextUpgradeDescription;
     private WeaponContext _context;
     private int _tier;
-    private WeaponData _weaponData;
+    protected WeaponData _weaponData;
     private float _actualCooldown = 10f;
 
 
@@ -29,12 +29,13 @@ public abstract class WeaponHolder : MonoBehaviour
         _tier++;
         var prevCount = _weaponData?.Count ?? 0;
         _weaponData = _weaponPrefab.GetWeaponData(_context, _tier);
-        var toSpawn = _weaponData.Count - prevCount;
+        var toSpawn = (_weaponData.Count - prevCount) * 2;
         while (toSpawn > 0)
         {
             var position = _instantiatedWeapons.FirstOrDefault()?.transform.position ?? transform.position;
             var weapon = Instantiate(_weaponPrefab, position, Quaternion.identity);
             _instantiatedWeapons.Add(weapon);
+            weapon.gameObject.SetActive(false);
             toSpawn--;
         }
 
@@ -52,13 +53,4 @@ public abstract class WeaponHolder : MonoBehaviour
     }
 
     protected abstract void UseWeapon();
-
-    private IEnumerator UseBullet()
-    {
-        foreach (var weapon in _instantiatedWeapons)
-        {
-            weapon.UseWeapon(transform);
-            yield return new WaitForSeconds(0.25f);
-        }
-    }
 }

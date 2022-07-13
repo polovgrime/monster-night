@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4043221504889257846}
-  - component: {fileID: 2418944207211795445}
+  - component: {fileID: 8960944497158579824}
   m_Layer: 9
   m_Name: BulletHolder
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2418944207211795445
+--- !u!114 &8960944497158579824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6615328151033140595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d68e3944b12acf42bcc377fdc0740a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bff1152050feab4184b46bce23a3bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponPrefab: {fileID: -2271278110363477477, guid: f8a967ed3a1d2264d89224bbac2ea4a5, type: 3}
   _weaponName: bullet
   _instantiatedWeapons: []
+  _burstPause: 0.25

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class WeaponHolder : MonoBehaviour
+public abstract class WeaponHolder : MonoBehaviour
 {
     [SerializeField] private Weapon _weaponPrefab;
     [SerializeField] private string _weaponName;
+    [SerializeField] protected List<Weapon> _instantiatedWeapons = new List<Weapon>();
+
     public string WeaponName => _weaponName;
     public string NextUpgradeDescription => _weaponData.NextUpgradeDescription;
     private WeaponContext _context;
@@ -14,7 +16,6 @@ public class WeaponHolder : MonoBehaviour
     private WeaponData _weaponData;
     private float _actualCooldown = 10f;
 
-    [SerializeField] private List<Weapon> _instantiatedWeapons = new List<Weapon>();
 
     private void Start()
     {
@@ -45,20 +46,12 @@ public class WeaponHolder : MonoBehaviour
         _actualCooldown -= Time.fixedDeltaTime;
         if (_actualCooldown <= float.Epsilon)
         {
-            if (WeaponName == "bullet")
-            {
-                StartCoroutine(UseBullet());
-            }
-            else
-                UseWeapon();
+            UseWeapon();
             _actualCooldown = _weaponData.Cooldown;
         }
     }
 
-    private void UseWeapon()
-    {
-        _instantiatedWeapons.ForEach(e => e.UseWeapon(transform));
-    }
+    protected abstract void UseWeapon();
 
     private IEnumerator UseBullet()
     {

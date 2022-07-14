@@ -8,10 +8,7 @@ public class Player : MonoBehaviour
     private static Player instance;
     public static Player PlayerInstance => instance;
 
-    [SerializeField] private int _baseHealth;
     [SerializeField] private List<WeaponHolder> _weapons;
-    ParticleSystem _bloodEffect;
-    private int _health;
 
     private void Awake()
     {
@@ -25,36 +22,12 @@ public class Player : MonoBehaviour
             return;
         }
 
-        _health = _baseHealth;
-
         if (_weapons.Count != 0)
         {
             _weapons = _weapons
                 .Select(e => SetUpWeapon(e))
                 .ToList();
         }
-    }
-
-    private void Start()
-    {
-        _bloodEffect = GetComponent<ParticleSystem>();
-    }
-
-    public void ApplyDamage(int damage)
-    {
-        _health -= damage;
-        _bloodEffect.Play();
-        if (_health < 0)
-        {
-            StartCoroutine(ApplyDeath());
-        }
-    }
-
-    private IEnumerator ApplyDeath()
-    {
-        enabled = false;
-        yield return new WaitForSeconds(.5f);
-        Destroy(gameObject);
     }
 
     private void OnDestroy()

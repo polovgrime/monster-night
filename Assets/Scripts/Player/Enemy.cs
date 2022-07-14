@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 10f;
     private Rigidbody2D _rigidbody;
     private SpriteRenderer _spriteRenderer;
-    private Player _player;
+    private PlayerHealth _player;
     private bool _isReady = true;
     private Collider2D _collider2D;
     private Collider2D _playerCollider;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        _player = Player.PlayerInstance;
+        _player = Player.PlayerInstance.GetComponent<PlayerHealth>();
         _playerCollider = _player.GetComponent<Collider2D>();
         _collider2D = GetComponent<Collider2D>();
     }
